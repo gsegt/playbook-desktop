@@ -1,0 +1,12 @@
+# {{ ansible_managed }}
+
+[Unit]
+Description=Automatic Shutdown Service Timer
+
+[Timer]
+{% for time in automatic_turn_off_times %}
+OnCalendar={{ time }}
+{% endfor %}
+
+[Install]
+WantedBy=timers.target

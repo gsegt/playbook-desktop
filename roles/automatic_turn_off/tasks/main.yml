@@ -1,0 +1,23 @@
+---
+- name: Copy auto-off service
+  become: true
+  ansible.builtin.template:
+    src: auto-off.service.j2
+    dest: /etc/systemd/system/auto-off.service
+    mode: "0644"
+
+- name: Copy auto-off timer
+  become: true
+  ansible.builtin.template:
+    src: auto-off.timer.j2
+    dest: /etc/systemd/system/auto-off.timer
+    mode: "0644"
+
+- name: Enable auto-off timer
+  become: true
+  ansible.builtin.service:
+    name: auto-off.timer
+    enabled: true
+
+- name: Allow all handlers to run
+  ansible.builtin.meta: flush_handlers

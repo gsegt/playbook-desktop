@@ -53,3 +53,10 @@ apps:
   - hunspell # System wide spell checker
   - hunspell-en_gb # English support
   - hunspell-fr # French support
+
+
+### Auto-off
+
+automatic_turn_off_times:
+  - Mon..Thu,Sun *-*-* 23:00:00
+  - Sat,Sun *-*-* 02:00:00

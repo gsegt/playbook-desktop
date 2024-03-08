@@ -10,3 +10,4 @@
     - role: sensors
     - role: desktop
     - role: apps
+    - role: automatic_turn_off
