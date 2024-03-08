@@ -4,3 +4,4 @@
   roles:
     - role: pacman
     - role: system
+    - role: fish

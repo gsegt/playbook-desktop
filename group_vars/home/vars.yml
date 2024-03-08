@@ -5,3 +5,9 @@ parallel_downloads: 10
 country_list:
   - France
 aur_helper: yay
+
+### Fish modules
+
+fish_modules:
+  - jorgebucaran/autopair.fish
+  - jhillyerd/plugin-git
