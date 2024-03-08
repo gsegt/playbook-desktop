@@ -26,4 +26,4 @@
   ansible.builtin.shell: fisher install {{ item }}
   args:
     executable: /usr/bin/fish
-  with_items: "{{ fish_modules }}"
+  with_items: "{{ fish.modules }}"

@@ -3,8 +3,8 @@
 #Fan Control Matrix.
 # [<Temp in C>,<Fanspeed in %>]
 speed_matrix:
-{% for matrice in speed_matrix %}
-  - {{ matrice }}
+{% for fan_speed_matrice in gpu_overclocking.fan_speed_matrix %}
+  - {{ fan_speed_matrice }}
 {% endfor %}
 
 # Current Min supported value is 4 due to driver bug

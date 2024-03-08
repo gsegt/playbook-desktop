@@ -16,7 +16,7 @@
   ansible.builtin.lineinfile:
     path: /etc/xdg/reflector/reflector.conf
     regexp: ^--country
-    line: --country {{ country_list | join(',') }}
+    line: --country {{ pacman.countries | join(',') }}
 
 - name: Enable and start reflector timer
   become: true

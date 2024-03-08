@@ -1,10 +1,10 @@
 # {{ ansible_managed }}
 
 OD_SCLK:
-1: {{ max_gpu_clock }}
+1: {{ gpu_overclocking.max_gpu_clock }}
 OD_MCLK:
-1: {{ max_vram_clock }}
+1: {{ gpu_overclocking.max_vram_clock }}
 OD_VDDGFX_OFFSET:
-{{ voltage_offset }}
+{{ gpu_overclocking.voltage_offset }}
 # Force power limit (in micro watts):
-FORCE_POWER_CAP: {{ max_gpu_power }}
+FORCE_POWER_CAP: {{ gpu_overclocking.max_gpu_power }}

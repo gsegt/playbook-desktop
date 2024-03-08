@@ -7,31 +7,34 @@ xdg_data_home: $HOME/.local/share
 xdg_state_home: $HOME/.local/state
 xdg_bin_home: $HOME/.local/bin
 
-### Pacman config
+### Pacman
 
-parallel_downloads: 10
-country_list:
-  - France
-aur_helper: yay
+pacman:
+  parallel_downloads: 10
+  countries:
+    - France
+  aur_helper: yay
 
-### Fish modules
+### Fish
 
-fish_modules:
-  - jorgebucaran/autopair.fish
-  - jhillyerd/plugin-git
+fish:
+  modules:
+    - jorgebucaran/autopair.fish
+    - jhillyerd/plugin-git
 
 ### GPU Overclocking
 
-systemd_boot_loader_file: arch.conf
-max_gpu_clock: 2500MHz # default value: 2334Mhz, max 2600MHz
-max_vram_clock: 1000MHz # default value: 1000Mhz, max 1075MHz
-voltage_offset: -75mV # default value: 0mV
-max_gpu_power: 200000000 # in micro watts default value: 203000000
-speed_matrix:
-  - [4, 25]
-  - [60, 25]
-  - [80, 40]
-  - [95, 100]
+gpu_overclocking:
+  systemd_boot_loader_file: arch.conf
+  max_gpu_clock: 2500MHz # default value: 2334Mhz, max 2600MHz
+  max_vram_clock: 1000MHz # default value: 1000Mhz, max 1075MHz
+  voltage_offset: -75mV # default value: 0mV
+  max_gpu_power: 200000000 # in micro watts default value: 203000000
+  fan_speed_matrix:
+    - [4, 25]
+    - [60, 25]
+    - [80, 40]
+    - [95, 100]
 
 ### Apps
 
@@ -54,9 +57,9 @@ apps:
   - hunspell-en_gb # English support
   - hunspell-fr # French support
 
+### Automatic turn off:
 
-### Auto-off
-
-automatic_turn_off_times:
-  - Mon..Thu,Sun *-*-* 23:00:00
-  - Sat,Sun *-*-* 02:00:00
+automatic_turn_off:
+  times:
+    - Mon..Thu,Sun *-*-* 23:00:00
+    - Sat,Sun *-*-* 02:00:00

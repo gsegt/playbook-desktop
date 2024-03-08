@@ -36,7 +36,7 @@
 - name: Check if amdgpu.ppfeaturemask=0xfffd7fff is configured in the boot command
   become: true
   ansible.builtin.lineinfile:
-    path: /boot/loader/entries/{{ systemd_boot_loader_file }}
+    path: /boot/loader/entries/{{ gpu_overclocking.systemd_boot_loader_file }}
     regexp: "^options .* amdgpu.ppfeaturemask=0xfffd7fff"
     state: absent
   check_mode: true

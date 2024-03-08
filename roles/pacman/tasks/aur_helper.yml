@@ -14,9 +14,9 @@
   ansible.builtin.lineinfile:
     path: /etc/pacman.conf
     regexp: ^ParallelDownloads =
-    line: "ParallelDownloads = {{ parallel_downloads }}"
+    line: "ParallelDownloads = {{ pacman.parallel_downloads }}"
 
 - name: Install AUR helper
   kewlfft.aur.aur:
     name:
-      - "{{ aur_helper }}-bin"
+      - "{{ pacman.aur_helper }}-bin"
