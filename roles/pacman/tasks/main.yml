@@ -1,0 +1,6 @@
+---
+- name: Import reflector tasks
+  ansible.builtin.import_tasks: reflector.yml
+
+- name: Import aur_helper tasks
+  ansible.builtin.import_tasks: aur_helper.yml

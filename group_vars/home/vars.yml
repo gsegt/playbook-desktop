@@ -1,0 +1,7 @@
+---
+### Pacman config
+
+parallel_downloads: 10
+country_list:
+  - France
+aur_helper: yay
