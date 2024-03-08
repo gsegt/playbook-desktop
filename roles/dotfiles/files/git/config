@@ -1,0 +1,8 @@
+[user]
+	name = ickule
+	email = 117572745+ickule@users.noreply.github.com
+[pull]
+	rebase = true
+[core]
+	autocrlf = input
+	eol = lf

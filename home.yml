@@ -5,3 +5,4 @@
     - role: pacman
     - role: system
     - role: fish
+    - role: dotfiles

@@ -1,4 +1,12 @@
 ---
+### Environment variables
+
+xdg_config_home: $HOME/.config
+xdg_cache_home: $HOME/.cache
+xdg_data_home: $HOME/.local/share
+xdg_state_home: $HOME/.local/state
+xdg_bin_home: $HOME/.local/bin
+
 ### Pacman config
 
 parallel_downloads: 10
