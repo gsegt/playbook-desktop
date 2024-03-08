@@ -9,3 +9,4 @@
     - role: gpu_overclocking
     - role: sensors
     - role: desktop
+    - role: apps

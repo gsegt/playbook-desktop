@@ -32,3 +32,24 @@ speed_matrix:
   - [60, 25]
   - [80, 40]
   - [95, 100]
+
+### Apps
+
+apps:
+  - ark # Archive manager
+  - dolphin # File manager
+  - kcalc # calculator
+  - spectacle # Screenshot utility
+  - gwenview # image viewer
+  - firefox # browser
+  - vlc # Video and music player
+  - btop # TUI system monitor
+  - visual-studio-code-bin # Visual text editor
+  - neovim # Neovim text editor
+  - less # pager
+  - discord # Discord client
+  - xwaylandvideobridge # Allow desktop sharing on Discord using Wayland
+  - signal-desktop # Signal client
+  - hunspell # System wide spell checker
+  - hunspell-en_gb # English support
+  - hunspell-fr # French support

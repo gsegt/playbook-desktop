@@ -1,0 +1,7 @@
+---
+- name: Include Steam, mangohud, proton-ge and tools and driver install
+  ansible.builtin.import_tasks: games.yml
+
+- name: Install apps
+  kewlfft.aur.aur:
+    name: "{{ apps }}"
