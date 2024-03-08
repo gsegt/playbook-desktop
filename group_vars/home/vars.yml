@@ -19,3 +19,16 @@ aur_helper: yay
 fish_modules:
   - jorgebucaran/autopair.fish
   - jhillyerd/plugin-git
+
+### GPU Overclocking
+
+systemd_boot_loader_file: arch.conf
+max_gpu_clock: 2500MHz # default value: 2334Mhz, max 2600MHz
+max_vram_clock: 1000MHz # default value: 1000Mhz, max 1075MHz
+voltage_offset: -75mV # default value: 0mV
+max_gpu_power: 200000000 # in micro watts default value: 203000000
+speed_matrix:
+  - [4, 25]
+  - [60, 25]
+  - [80, 40]
+  - [95, 100]

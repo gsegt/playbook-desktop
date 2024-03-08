@@ -6,3 +6,4 @@
     - role: system
     - role: fish
     - role: dotfiles
+    - role: gpu_overclocking
