@@ -4,11 +4,19 @@ This repository will a playbook to configure my Arch linux machine.
 
 ## 1. Requirements
 
-## 1.1 Set user as password less sudo
+The system this playbook was developed and intended for run the following:
+
+- Arch Linux
+- Ryzen 5000 series CPU
+- Radeon RX 6000 series GPU
+
+## 2. Installation
+
+## 2.1 Set user as password less sudo
 
 Run `EDITOR=nvim visudo -f /etc/sudoers.d/01_${username}` to create a drop in file for your user and add `${username} ALL=(ALL:ALL) NOPASSWD: ALL` to enjoy passwordless `sudo`
 
-### 1.2 Install Ansible
+### 2.2 Install Ansible
 
 Install required python packages:
 
@@ -34,7 +42,7 @@ Install required python modules:
 python -m pip install -U -r requirements.txt
 ```
 
-### 1.4 Install ansible-galaxy requirements
+### 2.3 Install ansible-galaxy requirements
 
 Install the ansible requirements:
 
@@ -42,7 +50,7 @@ Install the ansible requirements:
 ansible-galaxy install -r requirements.yml
 ```
 
-## 2. Using the ansible playbook
+## 3. Using the ansible playbook
 
 Run the playbook:
 
