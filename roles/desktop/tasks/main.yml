@@ -1,0 +1,22 @@
+---
+- name: Install Pipewire packages for sound
+  kewlfft.aur.aur:
+    name:
+      - pipewire
+      - pipewire-alsa
+      - pipewire-audio
+      - pipewire-jack
+      - pipewire-pulse
+      - wireplumber
+
+- name: Install KDE packages
+  kewlfft.aur.aur:
+    name:
+      - konsole # Terminal emulator
+      - plasma-meta # Plasma desktop
+
+- name: Enable SDDM service
+  become: true
+  ansible.builtin.systemd:
+    name: sddm
+    enabled: true
