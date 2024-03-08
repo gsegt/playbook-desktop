@@ -7,3 +7,4 @@
     - role: fish
     - role: dotfiles
     - role: gpu_overclocking
+    - role: sensors

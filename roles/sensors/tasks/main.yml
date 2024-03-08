@@ -1,0 +1,11 @@
+---
+- name: Install lm-sensors and zenpower3
+  kewlfft.aur.aur:
+    name:
+      - lm_sensors
+      - zenpower3-dkms
+      - linux-zen-headers
+  notify: Detect sensors
+
+- name: Allow all handlers to run
+  ansible.builtin.meta: flush_handlers
