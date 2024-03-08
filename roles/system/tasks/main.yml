@@ -1,0 +1,6 @@
+---
+- name: Update system, including AUR and cache
+  become: true
+  kewlfft.aur.aur:
+    upgrade: true
+    update_cache: true
