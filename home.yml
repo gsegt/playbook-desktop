@@ -1,13 +1,13 @@
 ---
-- name: Arch autoconfig
-  hosts: localhost
+- name: Configure desktop
+  hosts: desktop
   roles:
-    - role: pacman
     - role: system
     - role: fish
+    - role: pacman
     - role: dotfiles
-    - role: gpu_overclocking
+    - role: gpu-overclocking
     - role: sensors
+    - role: automatic-shutdown
     - role: desktop
-    - role: apps
-    - role: automatic_turn_off
+    - role: steam

@@ -1,48 +1,52 @@
-# Arch autoconfig
+# Playbook Desktop
 
-This repository will a playbook to configure my Arch linux machine.
+This repository will hold playbooks for my pc and servers using ansible.
 
-## 1. Requirements
+- [Playbook Desktop](#playbook-desktop)
+  - [Requirements](#requirements)
+    - [SSH setup](#ssh-setup)
+    - [Set user as password less sudo](#set-user-as-password-less-sudo)
+    - [Install Ansible](#install-ansible)
+    - [Install ansible-galaxy requirements](#install-ansible-galaxy-requirements)
+    - [Creating a secret vault](#creating-a-secret-vault)
+    - [Extra variables](#extra-variables)
+  - [Using the ansible playbook](#using-the-ansible-playbook)
 
-The system this playbook was developed and intended for run the following:
+## Requirements
 
-- Arch Linux
-- Ryzen 5000 series CPU
-- Radeon RX 6000 series GPU
+### SSH setup
 
-## 2. Installation
+This setup assumes that you have key based ssh access to your server.
+To setup a new key, you can use the following.
 
-## 2.1 Set user as password less sudo
+1. Generate a new ssh key
+
+    ```sh
+    ssh-keygen -t ed25516 -a 128 -f ~/.ssh/enter_your_custom_name
+    ```
+
+2. Copy the ssh key to your server
+
+    ```sh
+    ssh-copy-id -i /path/to/your/private/key/file username@ip_address
+    ```
+
+> [!NOTE]
+> You can use the ```-t rsa -b 4096``` option instead of ```-t ed25519``` to generate a key with comparable security and better compatibility at the price of creation and login performance
+
+### Set user as password less sudo
 
 Run `EDITOR=nvim visudo -f /etc/sudoers.d/01_${username}` to create a drop in file for your user and add `${username} ALL=(ALL:ALL) NOPASSWD: ALL` to enjoy passwordless `sudo`
 
-### 2.2 Install Ansible
+### Install Ansible
 
-Install required python packages:
+Install required packages:
 
-```sh
-pacman -S python3
-```
+  ```sh
+  sudo pacman -S ansible ansible-lint
+  ```
 
-Create a virtual environment:
-
-```sh
-python -m venv .venv
-```
-
-Activate your venv
-
-```sh
-source .venv/bin/activate (or activate.fish or activate.csh)
-```
-
-Install required python modules:
-
-```sh
-python -m pip install -U -r requirements.txt
-```
-
-### 2.3 Install ansible-galaxy requirements
+### Install ansible-galaxy requirements
 
 Install the ansible requirements:
 
@@ -50,12 +54,22 @@ Install the ansible requirements:
 ansible-galaxy install -r requirements.yml
 ```
 
-## 3. Using the ansible playbook
+### Creating a secret vault
+
+Create a new secret vault with ansible:
+
+```sh
+ansible-vault create /secret/folder/path/vault.yml
+```
+
+### Extra variables
+
+Check for variable staring with `vault_` in the vars files.
+
+## Using the ansible playbook
 
 Run the playbook:
 
 ```sh
 ansible-playbook home.yml -i inventories/production.yml
 ```
-
-## Credits/Sources

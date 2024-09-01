@@ -1,10 +1,10 @@
 ---
-- name: Install lm-sensors and zenpower3
+- name: Install all sensor packages
   kewlfft.aur.aur:
     name:
+      - linux-headers
       - lm_sensors
       - zenpower3-dkms
-      - linux-zen-headers
   notify: Detect sensors
 
 - name: Allow all handlers to run

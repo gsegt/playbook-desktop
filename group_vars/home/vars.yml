@@ -1,11 +1,57 @@
 ---
-### Environment variables
+### Ansible
+
+ansible_user: ickule
+ansible_python_interpreter: auto_silent
+ansible_connection: local
+
+### System
+
+system:
+  timezone: Europe/Paris
+  hostname: opendan
+  packages:
+    - neovim # terminal text editor
+    - less # terminal pager
+    - btop # terminal based system monitor
+
+### XDG Folders
 
 xdg_config_home: $HOME/.config
 xdg_cache_home: $HOME/.cache
 xdg_data_home: $HOME/.local/share
 xdg_state_home: $HOME/.local/state
 xdg_bin_home: $HOME/.local/bin
+
+### Environment variables
+
+env_vars:
+  - XDG_CONFIG_HOME {{ xdg_config_home }}
+  - XDG_CACHE_HOME {{ xdg_cache_home }}
+  - XDG_DATA_HOME {{ xdg_data_home }}
+  - XDG_STATE_HOME {{ xdg_state_home }}
+  - XDG_BIN_HOME {{ xdg_bin_home }}
+  - VISUAL "code --wait"
+  - EDITOR nvim
+  - PAGER less
+  - ANSIBLE_HOME $XDG_DATA_HOME/ansible
+  - ANSIBLE_CONFIG $XDG_CONFIG_HOME/ansible.cfg
+  - ANSIBLE_GALAXY_CACHE_DIR $XDG_CACHE_HOME/ansible/galaxy_cache
+  # - ELECTRON_OZONE_PLATFORM_HINT auto
+  - GTK_USE_PORTAL 1
+  - TEXMFVAR $XDG_CACHE_HOME/texlive/texmf-var
+  - GTK2_RC_FILES $XDG_CONFIG_HOME/gtk-2.0/gtkrc
+  - ANDROID_USER_HOME $XDG_DATA_HOME/android
+  - GNUPGHOME $XDG_DATA_HOME/gnupg
+
+path:
+  - $XDG_BIN_HOME
+
+### Fish
+
+fish_modules:
+  - jorgebucaran/autopair.fish
+  - jhillyerd/plugin-git
 
 ### Pacman
 
@@ -15,18 +61,11 @@ pacman:
     - France
   aur_helper: yay
 
-### Fish
-
-fish:
-  modules:
-    - jorgebucaran/autopair.fish
-    - jhillyerd/plugin-git
-
 ### GPU Overclocking
 
 gpu_overclocking:
-  systemd_boot_loader_file: arch.conf
-  max_gpu_clock: 2500MHz # default value: 2334Mhz, max 2600MHz
+  dracut_conf: localhost.conf
+  max_gpu_clock: 2300MHz # default value: 2334Mhz, max 2600MHz
   max_vram_clock: 1000MHz # default value: 1000Mhz, max 1075MHz
   voltage_offset: -75mV # default value: 0mV
   max_gpu_power: 200000000 # in micro watts default value: 203000000
@@ -36,30 +75,17 @@ gpu_overclocking:
     - [80, 40]
     - [95, 100]
 
-### Apps
+### Desktop
 
-apps:
-  - ark # Archive manager
-  - dolphin # File manager
-  - kcalc # calculator
-  - spectacle # Screenshot utility
-  - gwenview # image viewer
-  - firefox # browser
-  - vlc # Video and music player
-  - btop # TUI system monitor
-  - visual-studio-code-bin # Visual text editor
-  - neovim # Neovim text editor
-  - less # pager
-  - discord # Discord client
-  - xwaylandvideobridge # Allow desktop sharing on Discord using Wayland
-  - signal-desktop # Signal client
-  - hunspell # System wide spell checker
-  - hunspell-en_gb # English support
-  - hunspell-fr # French support
-
-### Automatic turn off:
-
-automatic_turn_off:
-  times:
-    - Mon..Thu,Sun *-*-* 23:00:00
-    - Sat,Sun *-*-* 02:00:00
+desktop:
+  apps:
+    - ark # Archive manager
+    - dolphin # File manager
+    - kcalc # Calculator
+    - spectacle # Screenshot utility
+    - gwenview # Image viewer
+    - firefox # Web Browser
+    - vlc # Video and music player
+    - hunspell # System wide spell checker
+    - hunspell-en_gb # English spell check support
+    - hunspell-fr # French spell check support

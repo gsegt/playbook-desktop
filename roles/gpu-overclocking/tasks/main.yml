@@ -1,0 +1,12 @@
+---
+- name: Get GPU card number # noqa: no-changed-when Only gathering data and not making actual changes
+  ansible.builtin.shell: set -o pipefail && ls /sys/class/drm | grep "^card[[:digit:]]$"
+  args:
+    executable: /bin/bash
+  register: card
+
+- name: Import amdfan tasks
+  ansible.builtin.include_tasks: amdfan.yml
+
+- name: Import amdgpu-clocks tasks
+  ansible.builtin.include_tasks: amdgpu-clocks.yml

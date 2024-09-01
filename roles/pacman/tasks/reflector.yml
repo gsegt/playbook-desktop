@@ -4,6 +4,12 @@
     name:
       - reflector
 
+- name: Enable reflector timer
+  become: true
+  ansible.builtin.systemd:
+    name: reflector.timer
+    enabled: true
+
 - name: Enable country selection
   become: true
   ansible.builtin.replace:
@@ -17,10 +23,3 @@
     path: /etc/xdg/reflector/reflector.conf
     regexp: ^--country
     line: --country {{ pacman.countries | join(',') }}
-
-- name: Enable and start reflector timer
-  become: true
-  ansible.builtin.systemd:
-    name: reflector.timer
-    enabled: true
-    state: started

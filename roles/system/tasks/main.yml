@@ -1,6 +1,33 @@
 ---
-- name: Update system, including AUR and cache
-  become: true
+- name: Update Arch Linux system fully
   kewlfft.aur.aur:
     upgrade: true
     update_cache: true
+
+- name: Set hostname
+  become: true
+  ansible.builtin.hostname:
+    name: "{{ system.hostname }}"
+
+- name: Set timezone
+  become: true
+  community.general.timezone:
+    name: "{{ system.timezone }}"
+
+- name: Create all XDG folders
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  with_items:
+    - "{{ xdg_bin_home }}"
+    - "{{ xdg_cache_home }}"
+    - "{{ xdg_config_home }}"
+    - "{{ xdg_data_home }}"
+    - "{{ xdg_state_home }}"
+
+- name: Install core system packages
+  become: true
+  ansible.builtin.package:
+    name: "{{ system.packages }}"
+    state: present

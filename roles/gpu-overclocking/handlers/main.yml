@@ -1,0 +1,16 @@
+---
+- name: Restart amdfan service
+  become: true
+  ansible.builtin.service:
+    name: amdfan
+    state: restarted
+
+- name: Restart amdgpu-clocks service
+  become: true
+  ansible.builtin.service:
+    name: amdgpu-clocks
+    state: restarted
+
+- name: Regenerate initramfs  # noqa: no-changed-when That's the point of a Handler, isn't it?
+  become: true
+  ansible.builtin.command: dracut --regenerate-all --force

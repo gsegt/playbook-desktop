@@ -1,0 +1,27 @@
+#!/usr/bin/sh
+
+# {{ ansible_managed }}
+
+# Get the current locale time in format HHMMSS to use it as an number
+current_time=$(/usr/bin/date +"%H%M%S")
+
+# Get the current day number
+current_day=$(/usr/bin/date +%u)
+
+# Check the day and time correspondence and turn the PC off accordingly
+case $current_day in
+    # Monday-Friday: Forbidden range 00h00-08h00
+    1|2|3|4|5)
+        if [ $current_time -le 080000 ] ;
+            then
+                /usr/bin/systemctl poweroff --when=+15s
+            fi
+        ;;
+    # Saturday-Sunday: Forbidden range 02h00-08h00
+    *)
+            if [ $current_time -ge 020000 ] && [ $current_time -le 080000 ] ;
+            then
+                /usr/bin/systemctl poweroff --when=+15s
+            fi
+        ;;
+esac
